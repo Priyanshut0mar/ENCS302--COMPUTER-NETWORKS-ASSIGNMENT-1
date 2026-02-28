@@ -154,5 +154,3 @@ ping 10.10.10.2
 # 📌 Conclusion
 
 This experiment demonstrates how network topology affects performance, reliability, and scalability. Switch-based networks provide better efficiency, while loop designs offer improved redundancy and fault tolerance.
-
-EOF
