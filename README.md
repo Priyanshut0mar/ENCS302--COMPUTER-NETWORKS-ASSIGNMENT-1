@@ -1,188 +1,149 @@
-🖧 ENCS304 – Computer Networks
-Assignment 1: Basic Network Topologies Using Switches and Hubs
-👨‍🎓 Student Details
+cat > README.md << 'EOF'
+# 🖧 ENCS304 – Computer Networks Lab
+## 📌 Assignment 1: Basic Network Topologies Using Switches and Hubs
 
-Name: Priyanshu Tomar
-Roll no.:- 2301010162
+---
 
-Program: B.Tech (CSE)
+## 👨‍🎓 Student Details
 
-Semester: 6
+| Field | Information |
+|-------|-------------|
+| Name | Priyanshu Tomar |
+| Roll No. | 2301010162 |
+| Program | B.Tech (CSE) |
+| Semester | 6 |
+| Course Code | ENCS304 |
+| Course Name | Computer Networks Lab |
+| School | School of Engineering and Technology |
 
-Course Code: ENCS304
+---
 
-Course Name: Computer Networks lAB
+## 🎯 Experiment Objective
 
-School: School of Engineering and Technology
-
-🎯 Experiment Objective
-
-This experiment was performed to understand how different LAN topologies affect:
-
-Network connectivity
-
-Performance
-
-Packet flow behavior
-
-Fault tolerance
+The objective of this experiment was to design and analyze different LAN topologies to understand how network structure impacts connectivity, performance, packet flow behavior, and fault tolerance.
 
 The networks were designed and tested using Cisco Packet Tracer.
 
-🛠️ Equipment & Software Used
-💻 (Virtual Components in Packet Tracer)
+---
 
-PCs
+## 🛠️ Equipment & Software Used
 
-Switches (Cisco 2960)
+### Virtual Devices (Packet Tracer)
+- PCs
+- Cisco 2960 Switches
+- Hub
+- Copper Straight-Through Ethernet Cables
 
-Hub
+### Software
+- Cisco Packet Tracer
+- Windows Operating System
 
-Ethernet Copper Straight-through Cables
+---
 
-🧰 Software Tool
+# 🌐 Topologies Implemented
 
-Cisco Packet Tracer (Network Simulation Tool)
-
-Windows Operating System
-
-🌐 Topologies Implemented
-1️⃣ Star Topology (Switch-Based)
-
-Configuration:
-
-1 Switch
-
-4 PCs connected directly to switch
-
-IP Address Range: 192.168.10.1 – 192.168.10.4
-
-Subnet Mask: 255.255.255.0 (/24)
-
-Testing:
-
-Ping sent from PC1 to PC2, PC3, PC4
-
-All replies received successfully
-
-Observation:
-
-No collisions
-
-Switch forwards frames using MAC address table
-
-If one cable disconnects → Only that PC is affected
-
-2️⃣ Bus-like Topology (Hub-Based)
+## 1️⃣ Star Topology (Switch-Based)
 
 Configuration:
-
-1 Hub
-
-4 PCs connected to hub
-
-Same IP scheme used
+- 1 Switch
+- 4 PCs connected directly
+- IP Range: 192.168.10.1 – 192.168.10.4
+- Subnet Mask: 255.255.255.0 (/24)
 
 Testing:
+- Ping sent from PC1 → PC2, PC3, PC4
+- All replies received successfully
 
-Simultaneous ping between devices
+Observations:
+- No collisions
+- Switch forwards frames using MAC Address Table
+- If one cable disconnects → Only that PC is affected
+- Better performance compared to hub
 
-Observation:
+---
 
-Hub broadcasts data to all ports
-
-Higher collision possibility
-
-Lower performance
-
-If hub fails → Entire network fails
-
-3️⃣ Ring-like Topology (Loop Using Switches)
+## 2️⃣ Bus-like Topology (Hub-Based)
 
 Configuration:
-
-3 Switches connected in loop
-
-1–2 PCs attached per switch
-
-Same subnet: 192.168.10.0/24
+- 1 Hub
+- 4 PCs connected
+- Same IP scheme used
 
 Testing:
+- Simultaneous ping between devices
 
-Ping across different switches
+Observations:
+- Hub broadcasts packets to all ports
+- Higher collision probability
+- Lower performance
+- If hub fails → Entire network fails
 
-Observation:
+---
 
-Multiple communication paths available
+## 3️⃣ Ring-like Topology (Loop Using Switches)
 
-Better fault tolerance
+Configuration:
+- 3 Switches connected in loop
+- 1–2 PCs attached per switch
+- Subnet: 192.168.10.0/24
 
-Data can take alternate path
+Testing:
+- Ping across switches successful
 
-🔍 Failure Test
+Observations:
+- Multiple communication paths available
+- Improved fault tolerance
+- Data reroutes if one link fails
+
+---
+
+# 🔍 Failure Test
 
 One link in the ring topology was disconnected.
 
 Result:
+- Communication remained successful
+- Traffic automatically used alternate path
 
-Communication still successful
+This demonstrates better redundancy compared to hub-based and simple star topology.
 
-Traffic rerouted via alternate path
+---
 
-This shows better fault tolerance compared to hub and simple star topology.
+# 📂 Repository Contents
 
-exp1_topologies.pkt   → Packet Tracer network file  
-output_exp1.txt       → Ping outputs and observations  
-report_exp1.pdf       → Complete experiment report with screenshots  
-README.md             → Project documentation  
+- exp1_topologies.pkt → Packet Tracer network file
+- output_exp1.txt → Ping outputs and observations
+- report_exp1.pdf → Complete lab report with screenshots
+- README.md → Project documentation
 
-▶️ How to Open and Test the Project
+---
 
-1️⃣ Install Cisco Packet Tracer
-2️⃣ Download or clone this repository
-3️⃣ Open file: exp1_topologies.pkt
-4️⃣ Click on any PC
-5️⃣ Go to:Desktop → Command Prompt
-6️⃣ Type:ping <destination_IP>
-7️⃣ To observe packet movement:
+# ▶️ How to Open and Test
 
-Switch to Simulation Mode
+1. Install Cisco Packet Tracer
+2. Open exp1_topologies.pkt
+3. Click on any PC
+4. Go to Desktop → Command Prompt
+5. Run: ping <destination_IP>
+6. Use Simulation Mode to observe packet flow
 
-Use ICMP filter
+Example:
+ping 192.168.10.2
 
-Watch packet flow
+---
 
-📊 Learning Outcomes Achieved
+# 📊 Learning Outcomes
 
-✔ Designed multiple LAN topologies
-✔ Configured IPv4 addresses correctly
-✔ Verified connectivity using ICMP
-✔ Understood packet flow differences
-✔ Compared topology performance
-✔ Tested network fault tolerance
+✔ Designed multiple LAN topologies  
+✔ Configured IPv4 addresses correctly  
+✔ Verified connectivity using ICMP  
+✔ Compared topology performance  
+✔ Tested network fault tolerance  
 
-📌 Practical Applications
+---
 
-Office LAN design
+# 📌 Conclusion
 
-Computer Lab networking
+This experiment demonstrates how network topology affects performance, reliability, and scalability. Switch-based networks provide better efficiency, while loop designs offer improved redundancy.
 
-Understanding cost vs performance trade-offs
-
-Basic physical network planning
-
-📎 Conclusion
-
-This experiment successfully demonstrated how topology selection impacts:
-
-Performance
-
-Reliability
-
-Cost
-
-Fault tolerance
-
-Switch-based star topology offers better performance than hub-based networks, while ring-like topology provides better redundancy.
-
-
+EOF
