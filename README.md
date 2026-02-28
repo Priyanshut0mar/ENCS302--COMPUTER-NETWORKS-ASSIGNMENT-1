@@ -46,65 +46,75 @@ The networks were designed and tested using Cisco Packet Tracer.
 Configuration:
 - 1 Switch
 - 4 PCs connected directly
-- IP Range: 192.168.10.1 – 192.168.10.4
+- IP Range: 10.10.10.1 – 10.10.10.4
 - Subnet Mask: 255.255.255.0 (/24)
 
 Testing:
-- Ping sent from PC1 → PC2, PC3, PC4
+- Ping sent from PC0 → 10.10.10.2, 10.10.10.3, 10.10.10.4
 - All replies received successfully
 
 Observations:
-- No collisions
+- No packet loss observed
 - Switch forwards frames using MAC Address Table
+- Minimal delay (0–1ms, one spike at 17ms due to ARP/simulation delay)
 - If one cable disconnects → Only that PC is affected
 - Better performance compared to hub
 
 ---
 
-## 2️⃣ Bus-like Topology (Hub-Based)
+## 2️⃣ Hub Topology (Bus-like)
 
 Configuration:
 - 1 Hub
 - 4 PCs connected
-- Same IP scheme used
+- IP Range: 10.10.10.1 – 10.10.10.4
+- Subnet Mask: 255.255.255.0 (/24)
 
 Testing:
-- Simultaneous ping between devices
+- Ping sent between connected PCs
+- All replies received successfully
 
 Observations:
 - Hub broadcasts packets to all ports
-- Higher collision probability
-- Lower performance
+- Slightly higher delay observed (up to 3ms)
+- Higher collision probability in larger networks
+- Lower efficiency compared to switch
 - If hub fails → Entire network fails
 
 ---
 
-## 3️⃣ Ring-like Topology (Loop Using Switches)
+## 3️⃣ Ring-like Topology (Loop Using Switches with STP)
 
 Configuration:
 - 3 Switches connected in loop
-- 1–2 PCs attached per switch
-- Subnet: 192.168.10.0/24
+- PCs attached to switches
+- IP Range: 10.10.10.4 – 10.10.10.6
+- Subnet Mask: 255.255.255.0 (/24)
 
 Testing:
 - Ping across switches successful
+- Maximum delay observed: 12ms
+- No packet loss
 
 Observations:
 - Multiple communication paths available
-- Improved fault tolerance
-- Data reroutes if one link fails
+- Spanning Tree Protocol (STP) prevented broadcast storm
+- Slightly higher delay due to multi-switch traversal
+- Improved fault tolerance compared to star and hub
 
 ---
 
-# 🔍 Failure Test
+# 🔍 Failure Test (Ring Topology)
 
 One link in the ring topology was disconnected.
 
 Result:
 - Communication remained successful
+- No packet loss
 - Traffic automatically used alternate path
+- STP recalculated topology dynamically
 
-This demonstrates better redundancy compared to hub-based and simple star topology.
+This demonstrates better redundancy and fault tolerance compared to hub-based and simple star topology.
 
 ---
 
@@ -127,7 +137,7 @@ This demonstrates better redundancy compared to hub-based and simple star topolo
 6. Use Simulation Mode to observe packet flow
 
 Example:
-ping 192.168.10.2
+ping 10.10.10.2
 
 ---
 
@@ -143,6 +153,6 @@ ping 192.168.10.2
 
 # 📌 Conclusion
 
-This experiment demonstrates how network topology affects performance, reliability, and scalability. Switch-based networks provide better efficiency, while loop designs offer improved redundancy.
+This experiment demonstrates how network topology affects performance, reliability, and scalability. Switch-based networks provide better efficiency, while loop designs offer improved redundancy and fault tolerance.
 
 EOF
