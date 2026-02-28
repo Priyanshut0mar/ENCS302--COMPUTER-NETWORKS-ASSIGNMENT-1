@@ -1,4 +1,3 @@
-cat > README.md << 'EOF'
 # 🖧 ENCS304 – Computer Networks Lab
 ## 📌 Assignment 1: Basic Network Topologies Using Switches and Hubs
 
